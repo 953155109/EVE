@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>guaugale</title>
+    <style>
+        canvas{
+            /* background-image: url('./img/中奖.jpg'); */
+        }
+    </style>
+</head>
+<body>
+    <canvas width="400" height="400" id= "myCanvas"></canvas>
+    <script>
+        var myCanvas = document.getElementById('myCanvas');
+        var ctx = myCanvas.getContext('2d');
+        var w = myCanvas.width;
+        var h = myCanvas.height;
+        var lastPos = {};
+        // 入口函数
+        function init() {
+            // 中奖概率
+            var img = new Image();
+            var random = Math.random();
+            if(random < 0.1) {
+                img.src = './img/中奖.jpg';
+            }else{
+                img.src = './img/没中奖.jpg';
+            }
+            // 加载图片后执行函数
+            img.onload = function (){
+                myCanvas.style.backgroundImage = 'url('+ img.src +')';
+                myCanvas.addEventListener('mousedown',downFun);
+            }
+        // 灰色蒙层
+            ctx.beginPath();
+            ctx.fillStyle = '#aaa';
+            ctx.fillRect(0,0,w,h);
+            ctx.globalCompositeOperation = 'destination-out';
+        }
+        // 执行函数
+        init();
+        // 鼠标按下
+        function downFun(e){
+            lastPos.x = e.clientX - myCanvas.offsetLeft;
+            lastPos.y = e.clientY - myCanvas.offsetTop;
+            ctx.beginPath();
+            ctx.arc(lastPos.x,lastPos.y,20,0,Math.PI*2);
+            ctx.fill();
+            ctx.closePath();
+            myCanvas.addEventListener('mousemove',moveFun);
+            document.body.addEventListener('mouseup',upFun);
+        }
+        // 鼠标移动
+        function moveFun (e){
+            var x = e.clientX - myCanvas.offsetLeft;
+            var y = e.clientY - myCanvas.offsetTop;
+            
+            ctx.beginPath();
+            ctx.moveTo(lastPos.x, lastPos.y);
+            ctx.lineTo(x,y);
+            ctx.lineWidth = 40;
+            ctx.lineCap ='round';
+            ctx.stroke();
+
+
+            lastPos.x = x;
+            lastPos.y = y;
+
+            // 擦除区域
+            // ctx.beginPath();
+            // ctx.arc(x,y,20,0,Math.PI*2);
+            // ctx.fill();
+            // ctx.closePath();
+        }
+        // 鼠标抬起
+        function upFun(){
+            myCanvas.removeEventListener('mousemove',moveFun);
+            myCanvas.removeEventListener('mouseup',upFun);
+            clearCover();
+        }
+        // 超过百分之70自动清光蒙层
+        function clearCover () {
+            var imageDate = ctx.getImageData(0,0,w,h);
+            var sum = 0;
+            for(var i = 0; i < imageDate.data.length; i+=4) {
+                if(imageDate.data[i] == 0){
+                    sum ++;
+                }
+            }
+            if (sum > w*h*0.7){
+                ctx.clearRect(0,0,w,h);
+            }
+            
+        }
+
+        // 擦除区域
+            // ctx.globalCompositeOperation = 'destination-out';
+            // ctx.beginPath();
+            // ctx.arc(100,100,100,0,Math.PI*2);
+            // ctx.fill();
+    </script>
+</body>
+
+</html>

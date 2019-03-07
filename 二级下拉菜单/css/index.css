@@ -1,0 +1,90 @@
+/* 初始化 */
+body,ul,li,a{
+    margin:0;
+    padding:0;
+    list-style-type:none;
+    text-decoration:none;
+}
+/* 一级菜单 */
+.clearfixed::after{
+    display:table;
+    content:"";
+    clear:both;
+}
+.container{
+    width: 1200px;
+    margin:0 auto;
+    /* border:1px solid black; */
+}
+.list{
+    margin:20px 0;
+    background:#808080;
+    height:43px;
+    position: relative;
+}
+.list > li{
+    float:left;
+    margin:0 20px;
+    line-height:42px;
+    
+}
+.list > li > a{
+    color:#fff;
+    display:block;
+    font-size:18px;
+    height:42px;
+    padding:0 12px;
+    border:1px solid #808080;
+    border-bottom:none;
+}
+.list > li > a:hover{
+    background:#fff;
+    color:#bc0303;
+    border:1px solid #c9c9c9;
+    border-bottom:none;
+}
+/* 二级菜单 */
+.item1{
+    width:160px;
+    position:absolute;
+    display: none;
+}
+.item{
+    position: absolute;
+    /* width:100%; */
+    overflow:hidden;
+    display: none;
+}
+.item-list, .item1-list1{
+    border:1px solid #c9c9c9;
+    background:#fff;
+    padding:2px 0 10px 12px;
+    border-top: none;
+    white-space:nowrap;
+}
+.item-list > li >a, .item1-list1> li >a{
+    color:#808080;
+    line-height:40px;
+}
+.item-list > li >a:hover, .item1-list1> li >a:hover{
+    text-decoration:underline;
+}
+
+.item-list >li:nth-child(2n-1)>a{
+    float:left;
+}
+.item-list >li:nth-child(2n) >a{
+    padding:0 30px;
+    /* width:80px; */
+    display:inline-block;
+}
+/* 显示效果 */
+.list .active .item,.list .active .item1{
+    display:block;
+}
+.list >.active >a{
+    background:#fff;
+    color:#bc0303;
+    border:1px solid #c9c9c9;
+    border-bottom:none;
+}

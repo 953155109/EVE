@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>player</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 图片部分 -->
+        <main class="main">
+            <audio id="audio" src="./souce/薛之谦 - 演员.mp3"></audio>
+            <img src="./souce/演员.jpg" alt="">
+        </main>
+        <!-- 功能部分 -->
+        <div class="tool">
+            <!-- 按钮 -->
+            <div class="btn">
+                <i class="iconfont icon-bofang"></i>
+            </div>
+            <div class="prev">
+                    <i class = "iconfont icon-shangyishou"></i>
+            </div>
+            <div class="next">
+                    <i class = "iconfont icon-xiayishou"></i>
+            </div>
+            <!-- 进度条 -->
+            <div class="progress">
+                <!-- 前面时间 -->
+                <div class="current-time"></div>
+                <!-- 中间进度条 -->
+                <div class="pro-box">
+                    <div class="pro-bg"></div>
+                    <div class="pro-active">
+                        <div class="radio-box">
+                            <span class="radio"></span>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- 后面时间 -->
+                <div class="all-time"></div>
+            </div>  
+            <!-- 音量 -->
+            <div class="volume">
+                <i class="iconfont icon-4icon"></i>
+            </div>
+            <!-- 音量条 -->
+            <div class="voice-abox">
+                <div class="voice-bg"></div>
+                <div class="voice-active">
+                    <div class="voice-box">
+                        <span class="voice-cbox"></span>
+                    </div>
+                    
+                    
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+</html>

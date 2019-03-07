@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>二级下拉菜单</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <ul class="list" id="list">
+                <li><a href="">首页</a></li>
+                <li >
+                    <a href="">关于chanke</a>
+                    <div class="item1">
+                        <ul class="item1-list1">
+                            <li><a href="">关于chanke1</a></li>
+                            <li><a href="">关于changke2</a></li>
+                            <li><a href="">关于changke3</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="">产品</a>
+                    <div class="item">
+                            <ul class="item-list">
+                                <li><a href="">产品1</a></li>
+                                <li><a href="">产品2</a></li>
+                                <li><a href="">产品3</a></li>
+                                <li><a href="">产品4111111222222</a></li>
+                            </ul>
+                        </div>
+                </li>
+                <li><a href="">科技</a></li>
+                <li><a href="">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+    <script>
+        var List =document.getElementById("list").getElementsByTagName("li");
+        for( var i=0;i<List.length; i++){
+            List[i].onmousemove = function(){
+                if(this.className !="active"){
+                    this.className ="active";
+                }
+                
+            }
+            List[i].onmouseout = function(){
+                if(this.className !=""){
+                    this.className ="";
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

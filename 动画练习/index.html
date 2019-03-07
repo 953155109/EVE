@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>2d</title>
+    <style>
+        ul{
+            width:80%;
+            margin:0 auto;
+            min-width:600px;
+            display:flex;
+            font-size:0;
+        }
+        li{
+            position:relative;
+            display: inline-block;
+            list-style:none;
+            width:200px;
+            margin:0 10px;
+            border:2px solid rgb(107, 5, 5);
+            border-radius: 20px;
+            overflow:hidden;
+            background:black;
+        }
+        ul li img{
+            width:100%;
+            height:100%;
+            border-radius:20px;
+            transform:translateY(100%);
+        }
+        li:nth-child(1) img{
+            animation:move 1s;
+            animation-fill-mode: forwards;
+        }
+        li:nth-child(2) img{
+            animation:move 1s 0.2s;
+            animation-fill-mode: forwards;
+        }
+        li:nth-child(3) img{
+            animation:move 1s 0.4s;
+            animation-fill-mode: forwards;
+        }
+        li:nth-child(4) img{
+            animation:move 1s 0.6s;
+            animation-fill-mode: forwards;
+        }
+        li:nth-child(5) img{
+            animation:move 1s 0.8s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes move{
+            0% {    
+                transform:translateY(100%);
+            }
+            100%{
+                transform:translateY(0);
+            }
+        }
+        .cover{
+            position:absolute;
+            bottom:0;
+            left:0;
+            height:45px;
+            width:100%;
+            overflow:hidden;
+        }
+        .des{
+            word-wrap:break-word;
+            font-size: 12px;
+            width: 100%;
+            height:100%;
+            line-height: 20px;
+            color: #fff;
+            /* padding: 0 5px; */
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8));
+            transform:translate(100%,0);
+            transition:transform 0.3 linear;
+        }
+        li .cover .in-top,
+        li .cover .out-top{
+            transform: translate(0, -100%);
+        }
+        li .cover .in-right, 
+        li .cover .out-right{
+            transform: translate(100%, 0);
+        }
+        li .cover .in-bottom, 
+        li .cover .out-bottom{
+            transform: translate(0, 100%);
+        }
+        li .cover .in-left, 
+        li .cover .out-left{
+            transform: translate(-100%, 0);
+        }
+        li .cover .in-left,
+        li .cover .in-right, 
+        li .cover .in-top,
+        li .cover .in-bottom{
+            animation: inDes 0.3s ease-out forwards;
+            
+        }
+        @keyframes inDes{
+            100%{transform: translate(0, 0);}
+        }
+        li .cover .out-top{
+            animation: out-top 0.3s ease-out;
+        }
+        li .cover .out-right{
+            animation: out-right 0.3s ease-out forwards;
+        }
+        li .cover .out-bottom{
+            animation: out-bottom 0.3s ease-out forwards;
+        }
+        li .cover .out-left{
+            animation: out-left 0.3s ease-out forwards;
+        }
+        @keyframes out-top{
+            0%{transform: translate(0, 0);}
+        }
+        @keyframes out-right{
+            0%{transform: translate(0, 0);}
+        }
+        @keyframes out-bottom{
+            0%{transform: translate(0, 0);}
+        }
+        @keyframes out-left{
+            0%{transform: translate(0, 0);}
+        }
+
+        
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <img src="1.jpg" alt="">
+            
+            <div class="cover">
+                <div class="des">123456123456</div>
+            </div>
+        </li>
+        <li>
+            <img src="2.jpg" alt="">
+            <div class="cover">
+                <div class="des">123456123456123456</div>
+            </div>
+        </li>
+        <li>
+            <img src="3.jpg" alt="">
+            <div class="cover">
+                <div class="des">123456123456222222222222222222222222222222123456</div>
+            </div>
+        </li>
+        <li>
+            <img src="4.jpg" alt="">
+            <div class="cover">
+                <div class="des">123456123456123456</div>
+            </div>
+        </li>
+        <li>
+            <img src="5.jpg" alt="">
+            <div class="cover">
+                <div class="des">123456123456123456</div>
+            </div>
+        </li>
+    </ul>
+    <script>
+        var oLi =document.getElementsByTagName('li');
+        var len = oLi.length;
+        // 绑定鼠标进入事件
+        for(var i =0; i < len; i++) {
+            oLi[i].onmouseenter = function (e) {
+                var d = getDirection(this,e);
+                var des = this.getElementsByClassName('des')[0];
+                des.className = 'des';
+                switch(d) {
+                    case 0: 
+                        des.classList.add('in-top');
+                        break;
+                    case 1: 
+                        des.classList.add('in-right');
+                        break;
+                    case 2: 
+                        des.classList.add('in-bottom');
+                        break;
+                    case 3: 
+                        des.classList.add('in-left');
+            }
+        }
+        // 绑定鼠标移出事件
+        oLi[i].onmouseleave = function (e) {
+                var d = getDirection(this, e);
+                var des = this.getElementsByClassName('des')[0];
+                des.className = 'des';
+                switch(d) {
+                    case 0: 
+                        des.classList.add('out-top');
+                        break;
+                    case 1: 
+                        des.classList.add('out-right');
+                        break;
+                    case 2: 
+                        des.classList.add('out-bottom');
+                        break;
+                    case 3: 
+                        des.classList.add('out-left');
+                }
+            }
+        }
+
+        // 判断从那里进入
+        function getDirection(ele, e) {
+            var w = ele.offsetWidth;
+            var h = ele.offsetHeight;
+            var x = (e.offsetX - w/2) * (w > h ? (h / w) : 1);
+            var y = (e.offsetY - h/2) * (h > w ? (w / h) : 1);
+            return d = (Math.round(((Math.atan2(y,x) * (180/Math.PI))+180)/90)+ 3)%4;
+        }
+
+    </script>
+</body>
+</html>

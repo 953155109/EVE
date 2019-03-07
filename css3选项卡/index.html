@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>nba</title>
+    <style>
+        body,div,li,ul,a{
+            margin:0;
+            padding:0;
+            list-style: none;
+            text-decoration:none;
+        }
+        .nba{
+            width:600px;
+            margin:0 auto;
+            background:#ccc;
+            font-size:0;
+        }
+        .nba input{
+            display:none;
+        }
+        .nav{
+            
+        }
+        nav ul li{
+            width:200px;
+            height:50px;
+            display:inline-block;
+            text-align:center;
+            line-height:50px;
+            font-size:20px;
+        }
+        nav ul li label{
+            display:inline-block;
+            width:200px;
+            height:50px;
+        }
+        .list{
+            background:#f7f7f7;
+        }
+        .list ul{
+            display:none;
+            padding:20px 0;
+        }
+        /* .list ul:first-child{
+            display:block;
+        } */
+        .list ul li{
+            margin:10px 50px;
+        }
+        
+        .list ul li a{
+            font-size:14px;
+            color:#666;
+        }
+        #team:checked ~ .list .team-list,#star:checked ~ .list .star-list,#game:checked ~ .list .game-list{
+            display: block;
+        }
+        #team:checked ~ .nav .team,#star:checked ~ .nav .star,#game:checked ~ .nav .game{
+            background:#f7f7f7;
+        }
+    </style>
+</head>
+<body>
+    <div class="nba">
+        <input type="radio" name="tab" id="team" checked="checked">
+        <input type="radio" name="tab" id="star">
+        <input type="radio" name="tab" id="game">
+        <nav class="nav">
+            <ul>
+                <li class="team"><label for="team">球队</label></li>
+                <li class="star"><label for="star">球星</label></li>
+                <li class="game"><label for="game">球赛</label></li>
+            </ul>
+        </nav>
+        <div class="list">
+            <ul class="team-list">
+                <li><a href="#">湖人队</a></li>
+                <li><a href="#">凯尔特人队</a></li>
+                <li><a href="#">雷霆队</a></li>
+            </ul>
+            <ul class="star-list">
+                <li><a href="#">科比布莱恩特</a></li>
+                <li><a href="#">勒布朗詹姆斯</a></li>
+                <li><a href="#">凯文杜兰特</a></li>
+            </ul>
+            <ul class="game-list">
+                <li><a href="#">湖人队vs勇士队</a></li>
+                <li><a href="#">雷霆队vs火箭队</a></li>
+                <li><a href="#">凯尔特人队vs猛龙队</a></li>
+            </ul>
+        </div>
+    </div>    
+</body>
+</html>

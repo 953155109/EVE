@@ -1,0 +1,198 @@
+body{
+    margin:0;
+    padding:0; 
+    list-style:none;
+    text-decoration:none;
+}
+html{
+    width:100%;
+    height:100%;
+}
+body{
+    height:100%;
+    width:100%;
+    background-image:url('../img/1.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    /* background-position:center bottom; */
+}
+.wrapper{
+    -webkit-user-select:none;
+
+    -moz-user-select:none;
+
+    -ms-user-select:none;
+
+    user-select:none;
+    /* background:#ccc; */
+    width:700px;
+    margin: 50px auto 0;
+}
+.main{
+    width:100%;
+    text-align:center;
+}
+main img{
+    width: 200px;
+    height:200px;
+    border:50px solid rgba(0, 0, 0, 0.3);
+    border-radius:50%;
+    
+}
+.tool{
+    position:relative;
+    width:100%;
+    height:80px;
+    background:rgba(0,0,0,0.5);
+    margin-top:100px;
+    border-radius:20px;
+}
+/* 按钮 */
+.btn{
+    position:absolute;
+    left:50px;
+    width:30px;
+    height:30px;
+}
+.tool i{
+    color:#fff;
+    font-size:29px;
+}
+.next{
+    position:absolute;
+    left:85px;
+    width:30px;
+    height:30px;
+}
+.prev{
+    position:absolute;
+    left:15px;
+    width:30px;
+    height:30px;
+}
+.volume{
+    position:absolute;
+    right:100px;
+    width:30px;
+    height:30px;
+}
+.tool>div{
+    top:50%;
+    margin-top:-15px;
+}
+
+.progress{
+    position: absolute;
+    left:50%;
+    margin-left:-230px;
+
+    width:400px;
+    height:30px;
+    /* background:#ccc; */
+}
+.current-time, .all-time{
+    width:80px;
+    height:30px;
+    text-align: center;
+    color:#fff;
+    line-height:30px;
+    font-weight:200;
+}
+.current-time{
+    float:left;
+}
+.all-time{
+    float:right;
+}
+/* 中间进度条 */
+.pro-box{
+    position: absolute;
+    top:50%;
+    margin-top:-1px;
+    display:inline-block;
+    width:240px;
+    height:30px;
+}
+.pro-bg{
+    width:100%;
+    height:2px;
+    background:rgba(138, 132, 132, 0.219);
+}
+.pro-active{
+    position:absolute;
+    top:0;
+    left:0;
+    width:8px;
+    height:2px;
+    background:#fff;
+}
+.radio-box{
+    position:absolute;
+    right:-6px;
+    top:-9px;
+    width:20px;
+    height:20px;
+    cursor:pointer;
+
+}
+.radio{
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-top:-4px;
+    margin-left:-4px;
+    display:inline-block;
+    width:8px;
+    height:8px;
+    background:#fff;
+    border-radius:50%;
+}
+
+
+/* 音量条 */
+.voice-abox{
+    position: absolute;
+    right:15px;
+    margin-right:0;
+    
+    width:80px;
+    height:30px;
+}
+
+.voice-bg{
+    position: absolute;
+    top:50%;
+    margin-top:-1px;
+    width:100%;
+    height:2px;
+    background:rgba(138, 132, 132, 0.219);
+}
+.voice-active{
+    position:absolute;
+    top:50%;
+    margin-top:-1px;
+    left:0;
+    width:60px;
+    height:2px;
+    background:#fff;
+}
+.voice-box{
+    position:absolute;
+    right:-6px;
+    top:-9px;
+    width:20px;
+    height:20px;
+    cursor:pointer;
+}
+.voice-cbox{
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-top:-4px;
+    margin-left:-4px;
+    display:inline-block;
+    width:8px;
+    height:8px;
+    background:#fff;
+    border-radius:50%;
+}

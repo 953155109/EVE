@@ -1,0 +1,125 @@
+.masthead{
+    text-align:center;
+    color:#fff;
+    padding: 60px 0 80px;
+    background: linear-gradient(45deg,#020031 0,#6d3353 100%);
+    margin-bottom:0;
+}
+.jumbotron:after {
+    
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url(../img/bs-docs-masthead-pattern.png) repeat center center;
+    opacity: .4;
+}
+.masthead h1{
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -2px;
+    font-weight: 700;
+}
+.masthead ul li{
+    list-style:none;
+    
+}
+.masthead ul li a{
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: rgba(255,255,255,0.5);
+}
+@media screen and (min-width: 768px){
+    .masthead {
+        padding: 90px 0 110px;
+    }
+    .masthead h1 {
+        font-size: 90px;
+        font-weight: 700;
+    }
+    .masthead h2 {
+        font-size: 24px;
+    }
+}
+.bc-social {
+    margin-top:0;
+    padding: 15px 0;
+    text-align: center;
+    background-color: #f5f5f5;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ddd;
+}
+.bc-social-buttons {
+    margin-left: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+}
+.bc-social-buttons li {
+    display: inline-block;
+    line-height: 1;
+    color: #555;
+}
+/* 中间竖线 */
+.bc-social-buttons>li+li:before {
+    padding: 0 10px;
+    color: #ccc;
+    content: "|";
+}
+.bc-social-buttons li a{
+    text-decoration: none;
+    color: #555;
+}
+.social-forum a:hover{
+    text-decoration:underline;
+}
+.social-weibo a:hover{
+    text-decoration:underline;
+    color:rgb(211, 76, 22);
+}
+
+.projects-header{
+    width: 60%;
+    text-align: center;
+    margin: 60px 0 10px;
+    font-weight: 200;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.projects-header h1{
+    font-size:30px;
+}
+@media screen and (min-width: 768px){
+    .projects-header h1 {
+    font-size: 42px;
+    }
+}
+
+.box{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 310px;
+    margin-bottom: 30px;
+    border-radius: 0;
+}
+
+/* 页脚 */
+.footer p{
+    color:#777;
+}
+.footer h4{
+    color: #563d7c;
+}
+.footer a{
+    color:#777;
+}
+.footer-bottom ul>li+li:before {
+    padding: 0 10px;
+    color: #ccc;
+    content: "|";
+}

@@ -1,0 +1,35 @@
+.content{
+    width:300px;
+    height:300px;
+    text-align: center;
+    border:1px solid black;
+    margin-bottom:30px;
+    background-color:rgb(135, 196, 23);
+}
+.tool{
+    position:relative;
+    width:300px;
+    height:30px;
+}
+.progress{
+    position:absolute;
+    left:0;
+    width:250px;
+    height:30px;
+    border:1px solid black;
+    border-radius:15px;
+    overflow:hidden;
+}
+.progress .val{
+    width:0;
+    height:30px;
+    background:black;
+}
+.text{
+    position:absolute;
+    right:0;
+    width:50px;
+    height:30px;
+    text-align:center;
+    line-height:30px;
+}
