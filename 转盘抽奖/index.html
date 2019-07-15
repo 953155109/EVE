@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>抽奖</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <table id="table">
+        <tr>
+            <td class="select">1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td></td>
+            <td id="start" class="start">开始</td>
+            <td id= "replace" class="replace">重置</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>12</td>
+            <td>11</td>
+            <td>10</td>
+            <td>9</td>
+        </tr>
+    </table>
+    <script>
+        var tdList = document.getElementById("table").getElementsByTagName("td");
+        var tdID = 0;
+        var tdAry = [0,1,2,3,4,9,14,19,24,23,22,21,20,15,10,5];
+        var runNum;
+        var maxNum;
+        function playFunc(){
+            tdList[tdAry[tdID]].className = "";
+            tdID = tdID+1 >=tdAry.length ? 0 : tdID+1;
+            tdList[tdAry[tdID]].className = "select";
+            runNum ++;
+            if(runNum > maxNum){
+                clearInterval(run);
+                return;
+            }
+            if(runNum == 6){
+                clearInterval(run);
+                run = setInterval(playFunc,20);
+            }
+            if(runNum + 6 == maxNum){
+                clearInterval(run);
+                run = setInterval(playFunc,200)
+            }
+        }
+        var start = document.getElementById("start");
+        start.onclick = function(){
+            runNum = 0;
+            maxNum = 16*1 +parseInt(Math.random() * 16);
+            run = setInterval(playFunc,200);
+            this.onclick="";
+        }
+        
+        var replace = document.getElementById("replace");
+        replace.onclick = function(){
+            window.location.reload()
+        }
+    </script>
+</body>
+</html>
