@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>三级城市联动</title>
+</head>
+
+<body>
+    <select name="" id="province">
+        
+    </select>
+    <select name="" id="city">
+            
+    </select>
+    <select name="" id="district">
+            
+    </select>
+    <script src="cc.js"></script>
+    <script>
+        var province = document.getElementById("province");
+        var city = document.getElementById("city");
+        var district = document.getElementById("district");
+        // 创建元素
+        // var provinceList = [{
+        //         name: "北京",
+        //         cityList: [{
+        //                 name: "市辖区",
+        //                 districtList:[
+        //                 '东城区','西城区','崇文区',
+        //                 ]
+        //             },
+        //             {
+        //                 name: "县",
+        //                 districtList:[
+        //                 '密云县','延庆县'
+        //                 ]
+        //             }
+        //         ]
+        //     },
+        //     {
+        //         name: "四川",
+        //         cityList: [{
+        //                 name: "成都市",
+        //                 districtList:[
+        //                 '市辖区','锦江区','青羊区',
+        //                 ]
+        //             },
+        //             {
+        //                 name: '自贡市',
+        //                 districtList:[
+        //                 '市辖区','自流井区','贡井区',
+        //                 ]
+        //             }
+        //         ]
+        //     }
+        // ]
+        for (var i = 0; i < provinceList.length; i++) {
+            var option = new Option(provinceList[i].name, provinceList[i].value)
+            province.options.add(option);
+        }
+
+        // 监听选择的操作（省）
+        province.onchange = changeProvince;
+        changeProvince()
+        changeCity()
+        function changeProvince() {
+            
+            
+            // console.log(province.selectedIndex);
+            // 清空option
+            city.options.length = 0;
+
+            var cityAry = provinceList[province.selectedIndex].cityList;
+            for (var i = 0; i < cityAry.length; i++) {
+                var option = new Option(cityAry[i].name, cityAry[i].name);
+                city.options.add(option);
+            }
+            changeCity()
+        }
+        // 监听选择的操作（市）
+        city.onchange = changeCity;
+        var districtAry = provinceList[province.selectedIndex].cityList[city.selectedIndex].districtList;
+        function changeCity() {
+            // console.log(this.selectedIndex);
+            // 清空option
+            district.options.length = 0;
+
+            var districtAry = provinceList[province.selectedIndex].cityList[city.selectedIndex].districtList;
+            for (var i = 0; i < districtAry.length; i++) {
+                var option = new Option(districtAry[i], districtAry[i]);
+                district.options.add(option);
+            }
+        }
+    </script>
+</body>
+
+</html>
