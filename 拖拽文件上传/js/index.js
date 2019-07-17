@@ -26,6 +26,7 @@ var events = {
     },
     finish: function(){
         console.log('上传完成');
+        document.getElementById("demo").innerHTML = "上传完成";
     }
 }
 

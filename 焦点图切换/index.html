@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>焦点图切换</title>
+    <style>
+        .cleaefix{
+            content:" ";
+            display:table;
+            clear:both;
+        }
+        #left{
+            width: 140px;
+            float:left;
+        }
+        #left img{
+            width:140px;
+            height: 78px;
+        }
+        #right{
+            float:left;
+            width: 440px;
+            margin-left:10px;
+        }
+        #right img{
+            width:440px;
+            display: none;
+            height: 250px;
+        }
+        #right .show{
+            display: inline-block;
+        }
+        #pointer{
+            position: absolute;
+            top:0;
+            left:0;
+            margin-top:3px;
+        }
+        .box{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="box clearfix"> 
+        <div id="left">
+            <img src="./1.jpg" alt="">
+            <img src="./2.jpg" alt="">
+            <img src="./3.jpg" alt="">
+        </div>
+        <img src="./pointer.png" alt="" id="pointer">
+        <div id="right">
+            <img src="./1.jpg" alt="" class="show">
+            <img src="./2.jpg" alt="">
+            <img src="./3.jpg" alt="">
+        </div>
+    </div>
+    <script>
+    var leftImgAry= document.getElementById("left").getElementsByTagName("img");
+    var rightImgAry= document.getElementById("right").getElementsByTagName("img");
+    var pointer = document.getElementById("pointer");
+    var TopAry = [0,82,164];
+    var moveLoop = null;
+    // 左右对应
+    for(var i = 0; i<leftImgAry.length; i++){
+        leftImgAry[i].onmouseover = mouseOver;
+        leftImgAry[i].index = i;
+    }
+    function mouseOver(){ 
+        // console.log(this.index);
+        for (var i = 0; i <rightImgAry.length; i++){
+            if(i == this.index){
+                rightImgAry[i].className = "show"
+                Top = TopAry[i];
+                console.log(Top)
+                nowTop = pointer.offsetTop;
+                console.log(nowTop)
+                if(moveLoop == null){
+                  moveLoop = setInterval(moveTo,10)
+                    console.log("执行")
+                }
+                console.log("行")
+            }
+            else{
+                rightImgAry[i].className = "";
+            }
+        }
+    }
+    
+    var Top = 164;
+    var nowTop = 0;
+    var speed = 4;
+    function moveTo(){
+        if(nowTop < Top){
+            nowTop += speed;
+            if(nowTop >= Top){
+                nowTop = Top;
+                clearInterval(moveLoop);
+                moveLoop = null;
+                console.log("清除1")
+            }
+        }
+        if(nowTop > Top){
+            nowTop -= speed;
+            if(nowTop <= Top){
+                nowTop = Top;
+                clearInterval(moveLoop);
+                moveLoop = null;
+                console.log("清除2")
+            }
+        }
+        if(nowTop == Top){
+            // nowTop = Top;
+            clearInterval(moveLoop);
+            moveLoop = null;
+            console.log("清除3")
+        }
+        
+        pointer.style.top = nowTop + "px";
+    }
+    </script>
+</body>
+</html>
