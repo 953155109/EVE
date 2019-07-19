@@ -62,7 +62,7 @@
     <script src="./js/ajax.js"></script>
     <script>
         var oLi = document.getElementsByTagName('li'),flag=true,page=1;
-        ajax('GET','https://953155109.github.io/EVE/ppl/getPics.php',dealData,'cpage='+page,true);
+        ajax('GET','./11.txt',dealData,'cpage='+page,true);
 
         window.onscroll = function(e){
             var index = checkList();
@@ -71,7 +71,7 @@
             var clientHeight = document.documentElement.clientHeight||document.body.clientHeight;
             if(h <= scrollTop+clientHeight&&flag){
                 page++;
-                ajax('GET','https://953155109.github.io/EVE/ppl/getPics.php',dealData,'cpage='+page,true);
+                ajax('GET','./11.txt',dealData,'cpage='+page,true);
                 flag=!flag;
             }
         }
